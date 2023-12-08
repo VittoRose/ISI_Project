@@ -16,7 +16,7 @@ dim.b = 1.5;
 % Pendulum length
 dim.L1 = 3;
 dim.L2 = 3;
-dim.Lp = 1.5;
+dim.Lp = 3;
 
 %% System inertial param
 
