@@ -1,7 +1,13 @@
 %% Test animation
+clc, close all;
 
-for i = 0:0.1:2*pi
+% Get data from simulink
+t = out.tout;
+theta = out.theta.Data;
+xc = out.xc.Data;
+
+for i = 1:1:length(t)
     cla;
-    draw_sys(2, i, dim);
+    draw_sys(xc(i), theta(i), dim);
     drawnow;
 end

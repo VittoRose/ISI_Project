@@ -1,22 +1,40 @@
 function draw_sys(xc, theta, dim)
+% Function used to draw the system in a specific configuration 
+% xc and theta are the two Lagrangian variable used to describe the system
+% dim is defined in init_param.m
+
+
+% Check if the kart position is possible
+if xc > dim.xmax
+    error("Xc exceeded maximum value");
+elseif xc < dim.xmin
+    error("Xc exceeded minimum value");
+end
+
 
 hold on
-
 title("Pendulum motion");
 axis equal
 grid on
-axis ([dim.xmin-2*dim.L1-0.5 dim.xmax+2*dim.L1+0.5 -2*dim.L1 2*dim.L2]);
 
-% Define cart
-cart = [xc-dim.b/2, -dim.h/2, dim.b, dim.h];
+% Graph boundary evaluation
+
+if dim.L1 >= dim.L2
+    axis ([dim.xmin-2*dim.L1-1 dim.xmax+2*dim.L1+1 -2*dim.L1-1 2*dim.L1+1]);
+else 
+    axis ([dim.xmin-2*dim.L2-1 dim.xmax+2*dim.L2+1 -2*dim.L2-1 2*dim.L2+1]);
+end
 
 % Draw rail
 plot([dim.xmin, dim.xmax], [0, 0], '-b');
 plot([dim.xmin, dim.xmin], [1, -1], '-b');
 plot([dim.xmax, dim.xmax], [1, -1], '-b');
 
-% Draw cart
-rectangle('Position', cart, 'EdgeColor', 'k', 'LineWidth', 2)
+% Define cart
+kart = [xc-dim.b/2, -dim.h/2, dim.b, dim.h];
+
+% Draw kart
+rectangle('Position', kart, 'EdgeColor', 'k', 'LineWidth', 2)
 
 % Penulum position 
 P_end1 = [xc + 2*dim.L1*sin(theta), 2*dim.L1*cos(theta)];
