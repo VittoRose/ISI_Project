@@ -37,6 +37,7 @@ M2 = 4;
 Kg = 4;         % Planetary gearbox ratio
 Km = 2;         % DC motor constant
 r = 0.1;        % motor pinion diameter
+d = 2*r;        % motor pinion diameter (?)
 
 
 % Param for dynamic equations
@@ -46,6 +47,17 @@ param.P = M2*dim.L2 + Mp*dim.Lp - M1*dim.L1;
 param.W = Kg*Km/r;
 param.Rm = 0.1;     % [ohm] armature resistence
 
+%% Sensor's Params
 
+% Sensors's standard deviations
+std_dev.distance_sensor = 0.005;    % [m] Deviazione standard sensore per misurazione distanza D (sensore laser)
+std_dev.a1_sensor = 0.09;           % [rad] Deviazione standard sensore per misurazione angolo a1 (telecamera)
+std_dev.angularspeed_sensor = 0.1;  % [rad/s] Deviazione standard sensore per misurazione velocità angolare pignone (sensore a effetto hall)
+
+% Sensor sampling times
+
+Ts.distance_sensor = 1e-3;
+Ts.a1_sensor = 5e-3;
+Ts.angularspeed_sensor = 1e-4;
 
 
