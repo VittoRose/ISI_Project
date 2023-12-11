@@ -37,8 +37,6 @@ M2 = 4;
 Kg = 4;         % Planetary gearbox ratio
 Km = 2;         % DC motor constant
 r = 0.1;        % motor pinion diameter
-d = 2*r;        % motor pinion diameter (?)
-
 
 % Param for dynamic equations
 param.M = Mp + Mc + M1 + M2;   
