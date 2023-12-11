@@ -1,6 +1,6 @@
 %% Parameters for simulation
 
-clear dim param;
+clear;
 clc
 
 %% Initial condition
@@ -42,7 +42,7 @@ r = 0.1;        % motor pinion diameter
 param.M = Mp + Mc + M1 + M2;   
 param.N = 4/3*(M2*dim.L2^2 + M1*dim.L1^2) + Mp*dim.Lp^2;
 param.P = M2*dim.L2 + Mp*dim.Lp - M1*dim.L1;
-param.W = Kg*Km/r;
+param.W = Kg*Km/(2*r);
 param.Rm = 0.1;     % [ohm] armature resistence
 
 %% Sensor's Params
@@ -54,8 +54,8 @@ std_dev.angularspeed_sensor = 0.1;  % [rad/s] Deviazione standard sensore per mi
 
 % Sensor sampling times
 
-Ts.distance_sensor = 1e-3;
-Ts.a1_sensor = 5e-3;
-Ts.angularspeed_sensor = 1e-4;
+Ts.distance_sensor = 1e-2;
+Ts.a1_sensor = 5e-2;
+Ts.angularspeed_sensor = 1e-3;
 
 
