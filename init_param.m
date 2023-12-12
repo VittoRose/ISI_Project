@@ -2,13 +2,15 @@
 
 clear;
 clc
+dt = 0.01;
 
 %% Initial condition
 xc_0 = 2;           % [m]
 dxc_0 = 0;          % [m/s]
-theta_0 = pi/3;     % [rad]
+theta_0 = 0/3;     % [rad]
 dtheta_0 = 0;       % [rad/s]
 
+input_seed = 0;     
 
 %% System dimension
 
@@ -16,27 +18,27 @@ dtheta_0 = 0;       % [rad/s]
 dim.xmin = 0;
 dim.xmax = 10;
 
-% Body dimension
+% Kart dimension
 dim.h = 1;
 dim.b = 1.5;
 
 % Pendulum length
 dim.L1 = 3;
 dim.L2 = 3;
-dim.Lp = 6;
+dim.Lp = 3;
 
 %% System inertial param
 
 % Masses
-Mp = 1;
+Mp = 3;
 Mc = 2;
-M1 = 3;
-M2 = 4;
+M1 = 1;
+M2 = 1;
 
 % Other param
 Kg = 4;         % Planetary gearbox ratio
 Km = 2;         % DC motor constant
-r = 0.1;        % motor pinion diameter
+r = 0.1;        % motor pinion radius
 
 % Param for dynamic equations
 param.M = Mp + Mc + M1 + M2;   
@@ -44,6 +46,7 @@ param.N = 4/3*(M2*dim.L2^2 + M1*dim.L1^2) + Mp*dim.Lp^2;
 param.P = M2*dim.L2 + Mp*dim.Lp - M1*dim.L1;
 param.W = Kg*Km/(2*r);
 param.Rm = 0.1;     % [ohm] armature resistence
+param.g = 9.81;     % [m/s^2]
 
 %% Sensor's Params
 
