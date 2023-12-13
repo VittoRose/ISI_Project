@@ -5,10 +5,10 @@ clc
 dt = 0.0001;
 
 %% Initial condition
-xc_0 = 0;           % [m]
-dxc_0 = 0;          % [m/s]
-theta_0 = 0;     % [rad]
-dtheta_0 = 0;       % [rad/s]
+xc_0 = 2;           % [m]
+dxc_0 = 1;          % [m/s]
+theta_0 = pi/3;     % [rad]
+dtheta_0 = 2;       % [rad/s]
 
 input_seed = 0;     
 
@@ -63,5 +63,14 @@ Ts.angularspeed_sensor = 1e-3;
 
 %% Evaluate matrix for EKF
 
-Get_F_matrix
-Get_H_matrix
+%Get_F_matrix
+%Get_H_matrix
+
+%% Parameters for EKF
+
+% Sensor Covariance
+R =[std_dev.distance_sensor^2 0 0; 0 std_dev.a1_sensor^2 0; 0 0 std_dev.angularspeed_sensor^2];
+
+x_mean_0 = [xc_0; theta_0; dxc_0; dtheta_0];
+
+P_0 = zeros(4);
