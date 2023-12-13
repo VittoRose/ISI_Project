@@ -5,9 +5,9 @@ clc
 dt = 0.01;
 
 %% Initial condition
-xc_0 = 2;           % [m]
+xc_0 = 0;           % [m]
 dxc_0 = 0;          % [m/s]
-theta_0 = pi;     % [rad]
+theta_0 = 0;     % [rad]
 dtheta_0 = 0;       % [rad/s]
 
 input_seed = 0;     
