@@ -8,8 +8,9 @@ Rm = param.Rm;
 g = param.g;
 W = param.W;
 P = param.P;
+V = 1;
 
-syms xc dxc theta dtheta V;
+syms xc dxc theta dtheta;
 q = [xc, dxc, theta, dtheta];
 
 % First row
@@ -26,5 +27,5 @@ d = jacobian(-P/Rm*(g*sin(theta)*Rm*M + cos(theta)*dtheta^2*sin(theta)*Rm*P + co
 
 F = [a; b; c; d];
 
-matlabFunction(F,'file','F_matrix', 'Vars', {q,V});
+matlabFunction(F,'file','F_matrix', 'Vars', {q});
     
