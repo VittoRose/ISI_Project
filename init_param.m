@@ -7,7 +7,7 @@ dt = 0.01;
 %% Initial condition
 xc_0 = 2;           % [m]
 dxc_0 = 0;          % [m/s]
-theta_0 = 0/3;     % [rad]
+theta_0 = pi;     % [rad]
 dtheta_0 = 0;       % [rad/s]
 
 input_seed = 0;     
@@ -63,4 +63,4 @@ Ts.angularspeed_sensor = 1e-3;
 
 %% Evaluate the F matrix for EKF
 
-get_F_matrix
+%get_F_matrix
