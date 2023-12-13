@@ -61,4 +61,6 @@ Ts.distance_sensor = 1e-2;
 Ts.a1_sensor = 5e-2;
 Ts.angularspeed_sensor = 1e-3;
 
+%% Evaluate the F matrix for EKF
 
+get_F_matrix
