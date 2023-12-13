@@ -26,5 +26,5 @@ d = jacobian(-P/Rm*(g*sin(theta)*Rm*M + cos(theta)*dtheta^2*sin(theta)*Rm*P + co
 
 F = [a; b; c; d];
 
-matlabFunction(F,'file','functions\get_F_matrix', 'Vars', {q,V});
+matlabFunction(F,'file','F_matrix', 'Vars', {q,V});
     
