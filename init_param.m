@@ -24,8 +24,13 @@ dtheta_0 = dtheta_0_i + std_dev_dtheta*randn(1,1);     % [rad/s]
 
 
 input_seed = 0;     
-%% Std deviation input disturbe
+%% Input disturbe parameter
+
+% Std deviation input disturbe
 std_dev_d = 0.0001;
+
+% Mean input disturbe
+U_mean = 0;
 %% System dimension
 
 % Rail length
