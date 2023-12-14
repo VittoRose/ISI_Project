@@ -4,11 +4,24 @@ clear;
 clc
 dt = 0.0001;
 
-%% Initial condition
+%% Ideal Initial condition
 xc_0 = 2;           % [m]
 dxc_0 = 1;          % [m/s]
 theta_0 = pi/3;     % [rad]
 dtheta_0 = 2;       % [rad/s]
+
+%% Std deviation initial conditions
+std_dev_xc = 0.001;             % [m]
+std_dev_theta = 0.001;          % [rad]
+std_dev_dxc = 0.001;            % [m/s]
+std_dev_dtheta = 0.001;         % [rad/s]
+
+%% Real Initial condition
+xc_real = xc_0 + std_dev_xc*randn(1,1) ;                % [m]
+dxc_real = dxc_0 + std_dev_theta*randn(1,1);            % [m/s]
+theta_real = theta_0 + std_dev_dxc*randn(1,1);          % [rad]
+dtheta_real = dtheta_0 + std_dev_dtheta*randn(1,1);     % [rad/s]
+
 
 input_seed = 0;     
 
