@@ -19,4 +19,3 @@ c = jacobian(omega,Noise);
 
 M = [a; b; c];
 
-matlabFunction(M,'file','H_matrix', 'Vars', {q, Noise});
