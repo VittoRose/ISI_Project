@@ -5,10 +5,10 @@ clc
 dt = 0.0001;
 
 %% Ideal Initial condition
-xc_0 = 2;           % [m]
-dxc_0 = 1;          % [m/s]
-theta_0 = pi/3;     % [rad]
-dtheta_0 = 2;       % [rad/s]
+xc_0_i = 0;           % [m]
+dxc_0_i = 0;          % [m/s]
+theta_0_i = 0;     % [rad]
+dtheta_0_i = 0;       % [rad/s]
 
 %% Std deviation initial conditions
 std_dev_xc = 0.001;             % [m]
@@ -17,10 +17,10 @@ std_dev_dxc = 0.001;            % [m/s]
 std_dev_dtheta = 0.001;         % [rad/s]
 
 %% Real Initial condition
-xc_real = xc_0 + std_dev_xc*randn(1,1) ;                % [m]
-dxc_real = dxc_0 + std_dev_theta*randn(1,1);            % [m/s]
-theta_real = theta_0 + std_dev_dxc*randn(1,1);          % [rad]
-dtheta_real = dtheta_0 + std_dev_dtheta*randn(1,1);     % [rad/s]
+xc_0 = xc_0_i + std_dev_xc*randn(1,1) ;                % [m]
+dxc_0 = dxc_0_i + std_dev_theta*randn(1,1);            % [m/s]
+theta_0 = theta_0_i + std_dev_dxc*randn(1,1);          % [rad]
+dtheta_0 = dtheta_0_i + std_dev_dtheta*randn(1,1);     % [rad/s]
 
 
 input_seed = 0;     
@@ -84,6 +84,6 @@ Ts.angularspeed_sensor = 1e-3;
 % Sensor Covariance
 R =[std_dev.distance_sensor^2 0 0; 0 std_dev.a1_sensor^2 0; 0 0 std_dev.angularspeed_sensor^2];
 
-x_mean_0 = [xc_0; theta_0; dxc_0; dtheta_0];
+x_mean_0 = [xc_0_i; theta_0_i; dxc_0_i; dtheta_0_i];
 
-P_0 = zeros(4);
+P_0 = [std_dev_xc^2 0 0 0; 0 std_dev_theta^2 0 0; 0 0 std_dev_dxc^2 0; 0 0 0 std_dev_dtheta^2];
