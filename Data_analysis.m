@@ -22,8 +22,9 @@ theta_EKF = reshape(theta_EKF,1,size(theta_EKF,3));
 dx_EKF = reshape(dx_EKF,1,size(dx_EKF,3));
 dtheta_EKF = reshape(dtheta_EKF,1,size(dtheta_EKF,3));
 
-% Real vs EKF
+%% Real vs EKF
 figure
+% xc plot
 subplot(2,2,1)
 plot(t,xc,'k','LineWidth',2)
 hold on
@@ -32,10 +33,29 @@ title("X_c real vs X_c EKF")
 grid on
 hold off
 
+% theta plot
 subplot(2,2,2)
 plot(t,theta,'k','LineWidth',2)
 hold on
 plot(t,theta_EKF,'r','LineWidth',2)
 title("\theta real vs \theta EKF")
+grid on
+hold off
+
+% dxc plot
+subplot(2,2,3)
+plot(t,dxc,'k','LineWidth',2)
+hold on
+plot(t,dx_EKF,'r','LineWidth',2)
+title("dX_c real vs dX_c EKF")
+grid on
+hold off
+
+% dtheta plot
+subplot(2,2,4)
+plot(t,dtheta,'k','LineWidth',2)
+hold on
+plot(t,dtheta_EKF,'r','LineWidth',2)
+title("d\theta real vs d\theta EKF")
 grid on
 hold off
