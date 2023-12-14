@@ -7,7 +7,7 @@ Rm = param.Rm;
 g = param.g;
 W = param.W;
 P = param.P;
-V = 1;
+
 
 syms xc dxc theta dtheta V;
 
@@ -26,4 +26,4 @@ d = jacobian(-P/Rm*(g*sin(theta)*Rm*M + cos(theta)*dtheta^2*sin(theta)*Rm*P + co
 
 D = [a; b; c; d];
 
-matlabFunction(D,'file','D_matrix', 'Vars', {q, V});
+matlabFunction(D,'file','D_matrix', 'Vars', {q});
