@@ -11,10 +11,10 @@ theta_0_i = 0;     % [rad]
 dtheta_0_i = 1;       % [rad/s]
 
 %% Std deviation initial conditions
-std_dev_xc = 0.0001;             % [m]
-std_dev_theta = 0.0001;          % [rad]
-std_dev_dxc = 0.0001;            % [m/s]
-std_dev_dtheta = 0.0001;         % [rad/s]
+std_dev_xc = 0.01;             % [m]
+std_dev_theta = 0.1;          % [rad]
+std_dev_dxc = 0.01;            % [m/s]
+std_dev_dtheta = 0.01;         % [rad/s]
 
 %% Real Initial condition
 xc_0 = xc_0_i + std_dev_xc*randn(1,1) ;                % [m]
@@ -95,6 +95,6 @@ Q = std_dev_d^2;
 
 x_mean_0 = [xc_0_i; theta_0_i; dxc_0_i; dtheta_0_i];
 
-P_0 = zeros(4); %[std_dev_xc^2 0 0 0; 0 std_dev_theta^2 0 0; 0 0 std_dev_dxc^2 0; 0 0 0 std_dev_dtheta^2];
+P_0 = zeros(4);
 
 epsilon = 0.0001;
