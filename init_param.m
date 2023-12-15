@@ -6,12 +6,12 @@ dt = 0.0001;
 
 %% Ideal Initial condition
 xc_0_i = 5;           % [m]
-dxc_0_i = pi/3;          % [m/s]
-theta_0_i = 0;     % [rad]
-dtheta_0_i = 1;       % [rad/s]
+dxc_0_i = 1;          % [m/s]
+theta_0_i = pi/3;     % [rad]
+dtheta_0_i = 0;       % [rad/s]
 
 %% Std deviation initial conditions
-std_dev_xc = 0.01;             % [m]
+std_dev_xc = 0.001;             % [m]
 std_dev_theta = 0.1;          % [rad]
 std_dev_dxc = 0.01;            % [m/s]
 std_dev_dtheta = 0.01;         % [rad/s]
@@ -95,6 +95,6 @@ Q = std_dev_d^2;
 
 x_mean_0 = [xc_0_i; theta_0_i; dxc_0_i; dtheta_0_i];
 
-P_0 = zeros(4);
+P_0 = (1e-6)^2*eye(4);
 
 epsilon = 0.0001;
