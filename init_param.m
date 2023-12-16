@@ -5,16 +5,16 @@ clc
 dt = 0.0001;
 
 %% Ideal Initial condition
-xc_0_i = 5;           % [m]
+xc_0_i = 2;           % [m]
 dxc_0_i = 1;          % [m/s]
-theta_0_i = pi/3;     % [rad]
+theta_0_i = pi/4;     % [rad]
 dtheta_0_i = 0;       % [rad/s]
 
 %% Std deviation initial conditions
-std_dev_xc = 0.001;             % [m]
+std_dev_xc = 0.1;             % [m]
 std_dev_theta = 0.1;          % [rad]
 std_dev_dxc = 0.01;            % [m/s]
-std_dev_dtheta = 0.01;         % [rad/s]
+std_dev_dtheta = 0.001;         % [rad/s]
 
 %% Real Initial condition
 xc_0 = xc_0_i + std_dev_xc*randn(1,1) ;                % [m]
@@ -49,10 +49,10 @@ dim.Lp = 3;
 %% System inertial param
 
 % Masses
-Mp = 3;
-Mc = 2;
-M1 = 1;
-M2 = 1;
+Mp = 5;
+Mc = 20;
+M1 = 3;
+M2 = 3;
 
 % Other param
 Kg = 4;         % Planetary gearbox ratio
@@ -70,7 +70,7 @@ param.g = 9.81;     % [m/s^2]
 %% Sensor's Params
 
 % Sensors's standard deviations
-std_dev.distance_sensor = 0.005;    % [m] Deviazione standard sensore per misurazione distanza D (sensore laser)
+std_dev.distance_sensor = 0.05;    % [m] Deviazione standard sensore per misurazione distanza D (sensore laser)
 std_dev.a1_sensor = 0.09;           % [rad] Deviazione standard sensore per misurazione angolo a1 (telecamera)
 std_dev.angularspeed_sensor = 0.1;  % [rad/s] Deviazione standard sensore per misurazione velocità angolare pignone (sensore a effetto hall)
 
@@ -95,6 +95,6 @@ Q = std_dev_d^2;
 
 x_mean_0 = [xc_0_i; theta_0_i; dxc_0_i; dtheta_0_i];
 
-P_0 = (1e-6)^2*eye(4);
+P_0 = [std_dev_xc^2 0 0 0; 0 std_dev_theta^2 0 0; 0 0 std_dev_dxc^2 0; 0 0 0 std_dev_dtheta^2];
 
 epsilon = 0.0001;
