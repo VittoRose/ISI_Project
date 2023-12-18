@@ -2,6 +2,10 @@
 
 clear;
 clc
+
+GET_MATRIX = false;
+
+% UKF and EKF sample time
 dt = 0.0001;
 
 %% Ideal Initial condition
@@ -11,9 +15,9 @@ theta_0_i = pi/4;     % [rad]
 dtheta_0_i = 0;       % [rad/s]
 
 %% Std deviation initial conditions
-std_dev_xc = 0.1;             % [m]
-std_dev_theta = 0.1;          % [rad]
-std_dev_dxc = 0.01;            % [m/s]
+std_dev_xc = 0.1;               % [m]
+std_dev_theta = 0.1;            % [rad]
+std_dev_dxc = 0.01;             % [m/s]
 std_dev_dtheta = 0.001;         % [rad/s]
 
 %% Real Initial condition
@@ -22,8 +26,6 @@ dxc_0 = dxc_0_i + std_dev_theta*randn(1,1);            % [m/s]
 theta_0 = theta_0_i + std_dev_dxc*randn(1,1);          % [rad]
 dtheta_0 = dtheta_0_i + std_dev_dtheta*randn(1,1);     % [rad/s]
 
-
-input_seed = 0;     
 %% Input disturbe parameter
 
 % Std deviation input disturbe
@@ -31,28 +33,29 @@ std_dev_d = 0.0001;
 
 % Mean input disturbe
 U_mean = 0;
+
 %% System dimension
 
 % Rail length
-dim.xmin = 0;
-dim.xmax = 10;
+dim.xmin = 0;               %[m]
+dim.xmax = 10;              %[m]
 
 % Kart dimension
-dim.h = 1;
-dim.b = 1.5;
+dim.h = 1;                  %[m]
+dim.b = 1.5;                %[m]
 
 % Pendulum length
-dim.L1 = 3;
-dim.L2 = 3;
-dim.Lp = 3;
+dim.L1 = 3;                 %[m]
+dim.L2 = 3;                 %[m]
+dim.Lp = 3;                 %[m]
 
 %% System inertial param
 
 % Masses
-Mp = 5;
-Mc = 20;
-M1 = 3;
-M2 = 3;
+Mp = 5;             %[kg]
+Mc = 20;            %[kg]
+M1 = 3;             %[kg]
+M2 = 3;             %[kg]
 
 % Other param
 Kg = 4;         % Planetary gearbox ratio
@@ -82,8 +85,10 @@ Ts.angularspeed_sensor = 1e-3;
 
 %% Evaluate matrix for EKF
 
-%Get_F_matrix
-%Get_H_matrix
+if GET_MATRIX 
+    Get_F_matrix
+    Get_H_matrix
+end
 
 %% Parameters for EKF
 
