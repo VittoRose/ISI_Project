@@ -1,6 +1,4 @@
 function [p_mean, propagated_cov] = UT_F(x_mean, sigma_x, dt, V, param)
-%   UT_F Summary of this function goes here
-%   Detailed explanation goes here
 
 % Rename input variables
 N = param.N;
@@ -19,11 +17,14 @@ lambda = alpha^2*(n + k);
 
 % Compute weights
 w0 = lambda/(lambda + n);
+wc = zeros(2*n+1,1);
 wc(1) = w0;
 wc(2:2*n+1) = 1/(2*(n+lambda));
+size(wc)
 
 % Factorise covariance matrix
 [U,S] = svd(sigma_x);
+S = complex(S);
 gamma = U*S^(1/2);
 
 % Create sigma points
@@ -36,25 +37,25 @@ for i = 1:size(gamma,2)
 end
 
 % Propagated sigma points eval.
-prop_sigma_points = zeros(size(sigma_points));
+prop_sigma_points = zeros(length(x_mean),2*n+1);
 for i = 1:size(gamma,2)
 
     % Rename sigma points componets
-    xc = sigma_points(1,i);
+    % xc = sigma_points(1,i);
     theta = sigma_points(2,i);
     dxc = sigma_points(3,i);
     dtheta = sigma_points(4,i);
     
     % F(sigma_points)
     prop_sigma_points(:,i) = sigma_points(1:4,i) + dt*...
-        [sigma_points(2,i);...
-        sigma_points(4,i);...
+        [dxc;...
+        dtheta;...
         (V*N*M - dxc*N*W^2 + cos(theta)*g*sin(theta)*Rm*P^2 + dtheta^2*sin(theta)*Rm*N*P)/(Rm*(N*M - cos(theta)^2*P^2));...
-        -P/Rm*(g*sin(theta)*Rm*M + cos(theta)*dtheta^2*sin(theta)*Rm*P + cos(theta)*(V + U)*M - cos(theta)*dxc*W^2)/(N*M - cos(theta)^2*P^2)*dt + dtheta];
+        -P/Rm*(g*sin(theta)*Rm*M + cos(theta)*dtheta^2*sin(theta)*Rm*P + cos(theta)*(V)*M - cos(theta)*dxc*W^2)/(N*M - cos(theta)^2*P^2)];
 end
 
 % Propagated mean
-p_mean = prop_sigma_points*wc';
+p_mean = prop_sigma_points*wc;
 
 % Propagated cov
 propagated_cov = zeros(size(sigma_x));

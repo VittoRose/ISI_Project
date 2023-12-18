@@ -4,6 +4,7 @@ clear;
 clc
 
 GET_MATRIX = false;
+sim_time = 5;
 
 % UKF and EKF sample time
 dt = 0.0001;
