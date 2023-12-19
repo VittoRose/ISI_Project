@@ -4,15 +4,15 @@ clear;
 clc
 
 GET_MATRIX = false;
-sim_time = 5;
+sim_time = 10;
 
 % UKF and EKF sample time
 dt = 0.0001;
 
 %% Ideal Initial condition
-xc_0_i = 2;           % [m]
-dxc_0_i = 1;          % [m/s]
-theta_0_i = pi/4;     % [rad]
+xc_0_i = 0;           % [m]
+dxc_0_i = 0;          % [m/s]
+theta_0_i = 0;     % [rad]
 dtheta_0_i = 0;       % [rad/s]
 
 %% Std deviation initial conditions
@@ -30,7 +30,7 @@ dtheta_0 = dtheta_0_i + std_dev_dtheta*randn(1,1);     % [rad/s]
 %% Input disturbe parameter
 
 % Std deviation input disturbe
-std_dev_d = 0.0001;
+std_dev_d = 0.01;
 
 % Mean input disturbe
 U_mean = 0;
@@ -53,10 +53,10 @@ dim.Lp = 3;                 %[m]
 %% System inertial param
 
 % Masses
-Mp = 5;             %[kg]
-Mc = 20;            %[kg]
-M1 = 3;             %[kg]
-M2 = 3;             %[kg]
+Mp = 10;             %[kg]
+Mc = 30;            %[kg]
+M1 = 10;             %[kg]
+M2 = 10;             %[kg]
 
 % Other param
 Kg = 4;         % Planetary gearbox ratio
@@ -89,6 +89,7 @@ Ts.angularspeed_sensor = 1e-3;      % [s]
 if GET_MATRIX 
     Get_F_matrix
     Get_H_matrix
+    Get_D_matrix
 end
 
 %% Parameters for EKF
