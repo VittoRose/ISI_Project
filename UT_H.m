@@ -1,4 +1,4 @@
-function [y_now, Cov_y, cross_cov] = UT_H(x_mean, sigma_x, dim, r)
+function [y, Cov_y, cross_cov] = UT_H(x_mean, sigma_x, dim, r)
 
 % Define parameters
 alpha = 1;
@@ -16,7 +16,7 @@ wc(2:2*n+1) = 1/(2*(n+lambda));
 % Factorise covariance matrix
 [U,S] = svd(sigma_x);
 S = complex(S);                 % convert S to a complex matrix to avoid errors
-gamma = U*S^(1/2);
+gamma = U*sqrt(S);
 
 gamma = real(gamma);
 
@@ -40,28 +40,28 @@ for i = 1:size(gamma,2)
     % dtheta = sigma_points(4,i);
     
     % h(sigma_points)
-    prop_sigma_points(:,i) = [(dim.xmax - dim.xmin)+xc; atan2(-dim.Lp*cos(theta), xc+dim.Lp*sin(theta)); dxc/r];
+    prop_sigma_points(:,i) = [(dim.xmax - dim.xmin) - xc; atan2(-dim.Lp*cos(theta), xc - dim.Lp*sin(theta)); dxc/r];
 end
 
 
 % Compute means
-y_now = zeros(3,1);
-y_now(1) = prop_sigma_points(1,:)*wc;
-y_now(2) = atan2(sin(prop_sigma_points(2,:))*wc,cos(prop_sigma_points(2,:))*wc);
-y_now(3) = prop_sigma_points(1,:)*wc;
+y = zeros(3,1);
+y(1) = prop_sigma_points(1,:)*wc;
+y(2) = atan2(sin(prop_sigma_points(2,:))*wc,cos(prop_sigma_points(2,:))*wc);
+y(3) = prop_sigma_points(3,:)*wc;
 
 % Compute tilde
 y_tilde = zeros(3,2*n+1);
 
 for i = 1:1:2*n+1
-    y_tilde(1,i) = prop_sigma_points(1,i) - y_now(1);
-    y_tilde(2,i) = atan2(sin(prop_sigma_points(2,i) - y_now(2)) ,cos(prop_sigma_points(2,i)- y_now(2)));
-    y_tilde(3,i) = prop_sigma_points(3,i) - y_now(3);
+    y_tilde(1,i) = prop_sigma_points(1,i) - y(1);
+    y_tilde(2,i) = atan2(sin(prop_sigma_points(2,i) - y(2)) ,cos(prop_sigma_points(2,i)- y(2)));
+    y_tilde(3,i) = prop_sigma_points(3,i) - y(3);
 end
 
 % Compute cov
-Cov_y = zeros(length(y_now), length(y_now));
-cross_cov = zeros(length(x_mean), length(y_now));
+Cov_y = zeros(length(y), length(y));
+cross_cov = zeros(length(x_mean), length(y));
 for i = 1:1:2*n+1
         Cov_y = Cov_y + wc(i)*y_tilde(:,i)*y_tilde(:,i)';
         cross_cov = cross_cov + wc(i)*(sigma_points(:,i) - x_mean)*y_tilde(:,i)';
