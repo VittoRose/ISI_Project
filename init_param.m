@@ -10,9 +10,9 @@ sim_time = 5;
 dt = 0.0001;
 
 %% Ideal Initial condition
-xc_0_i = 0;           % [m]
+xc_0_i = 2;           % [m]
 dxc_0_i = 0;          % [m/s]
-theta_0_i = 0;     % [rad]
+theta_0_i = pi/4;     % [rad]
 dtheta_0_i = 0;       % [rad/s]
 
 %% Std deviation initial conditions

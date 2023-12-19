@@ -1,4 +1,4 @@
-function draw_sys(xc, theta, xce, thetae, dim)
+function draw_sys(xc, theta, xce, thetae, dim, filter_type)
 % Function used to draw the system in a specific configuration 
 % xc and theta are the two Lagrangian variable used to describe the system
 % dim is defined in init_param.m
@@ -11,8 +11,10 @@ elseif xc < dim.xmin
     error("Xc exceeded minimum value");
 end
 
+des = ["Pendulum motion", filter_type];
+
 hold on
-title("Pendulum motion");
+title(des);
 axis equal
 grid on
 
