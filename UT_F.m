@@ -26,6 +26,7 @@ size(wc)
 [U,S] = svd(sigma_x);
 S = complex(S);
 gamma = U*S^(1/2);
+gamma = real(gamma);
 
 % Create sigma points
 sigma_points = zeros(length(x_mean),2*n+1);

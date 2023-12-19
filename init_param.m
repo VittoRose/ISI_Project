@@ -61,28 +61,28 @@ M2 = 3;             %[kg]
 % Other param
 Kg = 4;         % Planetary gearbox ratio
 Km = 2;         % DC motor constant
-r = 0.1;        % motor pinion radius
+r = 0.1;        % [m] motor pinion radius   
 
 % Param for dynamic equations
 param.M = Mp + Mc + M1 + M2;   
 param.N = 4/3*(M2*dim.L2^2 + M1*dim.L1^2) + Mp*dim.Lp^2;
 param.P = M2*dim.L2 + Mp*dim.Lp - M1*dim.L1;
 param.W = Kg*Km/(2*r);
-param.Rm = 0.1;     % [ohm] armature resistence
-param.g = 9.81;     % [m/s^2]
+param.Rm = 0.1;                                 % [ohm] armature resistence
+param.g = 9.81;                                 % [m/s^2]
 
 %% Sensor's Params
 
 % Sensors's standard deviations
-std_dev.distance_sensor = 0.05;    % [m] Deviazione standard sensore per misurazione distanza D (sensore laser)
+std_dev.distance_sensor = 0.05;     % [m] Deviazione standard sensore per misurazione distanza D (sensore laser)
 std_dev.a1_sensor = 0.09;           % [rad] Deviazione standard sensore per misurazione angolo a1 (telecamera)
 std_dev.angularspeed_sensor = 0.1;  % [rad/s] Deviazione standard sensore per misurazione velocità angolare pignone (sensore a effetto hall)
 
 % Sensor sampling times
 
-Ts.distance_sensor = 1e-2;
-Ts.a1_sensor = 5e-2;
-Ts.angularspeed_sensor = 1e-3;
+Ts.distance_sensor = 1e-2;          % [s]
+Ts.a1_sensor = 5e-2;                % [s]
+Ts.angularspeed_sensor = 1e-3;      % [s]
 
 %% Evaluate matrix for EKF
 

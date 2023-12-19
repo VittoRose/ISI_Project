@@ -98,7 +98,6 @@ hold on
 plot(t,theta_UKF,'r','LineWidth',2)
 title("\theta real vs \theta UKF")
 grid on
-legend("Real","UKF");
 hold off
 
 % dxc plot
@@ -108,7 +107,6 @@ hold on
 plot(t,dx_UKF,'r','LineWidth',2)
 title("dX_c real vs dX_c UKF")
 grid on
-legend("Real","UKF");
 hold off
 
 % dtheta plot
@@ -118,5 +116,4 @@ hold on
 plot(t,dtheta_UKF,'r','LineWidth',2)
 title("d\theta real vs d\theta UKF")
 grid on
-legend("Real","UKF");
 hold off

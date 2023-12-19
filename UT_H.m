@@ -18,6 +18,8 @@ wc(2:2*n+1) = 1/(2*(n+lambda));
 S = complex(S);                 % convert S to a complex matrix to avoid errors
 gamma = U*S^(1/2);
 
+gamma = real(gamma);
+
 % Create sigma points
 sigma_points = zeros(length(x_mean),2*n+1);
 sigma_points(:,1) = x_mean;
