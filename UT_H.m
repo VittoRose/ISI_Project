@@ -7,6 +7,8 @@ k = 0;
 n = size(x_mean,1);
 lambda = alpha^2*(n + k) - n;
 
+
+
 % Compute weights
 w0 = lambda/(lambda + n);
 

@@ -26,7 +26,7 @@ w0 = lambda/(lambda + n);
 wc = zeros(2*n+1,1);
 wc(1) = w0;
 wc(2:2*n+1) = 1/(2*(n+lambda));
-size(wc)
+
 
 % Factorise covariance matrix
 [U,S] = svd(sigma);
