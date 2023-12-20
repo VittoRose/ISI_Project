@@ -2,16 +2,27 @@ function [y, Cov_y, cross_cov] = UT_H(x_mean, sigma_x, dim, r)
 
 % Define parameters
 alpha = 1;
-% beta = 2;
+%beta = 2;
 k = 0;
 n = size(x_mean,1);
-lambda = alpha^2*(n + k);
+lambda = alpha^2*(n + k) - n;
 
 % Compute weights
 w0 = lambda/(lambda + n);
+
 wc = zeros(2*n+1,1);
 wc(1) = w0;
 wc(2:2*n+1) = 1/(2*(n+lambda));
+size(wc)
+
+% Covariance weights
+%wc = zeros(2*n+1,1);
+%wc(1) = w0 + 1 - alpha^2 + beta;
+%wc(2:2*n+1) = 1/(2*(n+lambda));
+
+% Mean weights
+%wm = wc;
+%wm(1) = w0;
 
 % Factorise covariance matrix
 [U,S] = svd(sigma_x);

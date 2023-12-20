@@ -3,7 +3,7 @@
 clear;
 clc
 
-GET_MATRIX = false;
+GET_MATRIX = true;
 sim_time = 5;
 
 % UKF and EKF sample time
