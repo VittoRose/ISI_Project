@@ -3,7 +3,7 @@
 clear;
 clc
 
-GET_MATRIX = false;
+GET_MATRIX = true;
 sim_time = 20;
 
 % UKF and EKF sample time
@@ -13,7 +13,7 @@ dt_UKF = 0.001;
 %% Ideal Initial condition
 xc_0_i = 2;           % [m]
 dxc_0_i = 0;          % [m/s]
-theta_0_i = pi/3;     % [rad]
+theta_0_i = pi/4;     % [rad]
 dtheta_0_i = 0;       % [rad/s]
 
 %% Std deviation initial conditions
