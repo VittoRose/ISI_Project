@@ -2,7 +2,7 @@ function [y, Cov_y, cross_cov] = UT_H(x_mean, sigma_x, dim, r)
 
 % Define parameters
 alpha = 1;
-%beta = 2;
+beta = 2;
 k = 0;
 n = size(x_mean,1);
 lambda = alpha^2*(n + k) - n;
@@ -13,23 +13,22 @@ lambda = alpha^2*(n + k) - n;
 w0 = lambda/(lambda + n);
 
 wc = zeros(2*n+1,1);
-wc(1) = w0;
+wc(1) = w0 + 1 - alpha^2 + beta;
 wc(2:2*n+1) = 1/(2*(n+lambda));
-size(wc)
 
-% Covariance weights
-%wc = zeros(2*n+1,1);
-%wc(1) = w0 + 1 - alpha^2 + beta;
-%wc(2:2*n+1) = 1/(2*(n+lambda));
 
 % Mean weights
-%wm = wc;
-%wm(1) = w0;
+wm = wc;
+wm(1) = w0;
 
-% Factorise covariance matrix
+% Factorise covariance matrix whit SVD
 [U,S] = svd(sigma_x);
 S = complex(S);                 % convert S to a complex matrix to avoid errors
 gamma = U*sqrt(S);
+
+
+% Factorise covariance matrix whit SQRT
+% gamma = sqrt(complex(sigma_x));
 
 gamma = real(gamma);
 
@@ -59,9 +58,9 @@ end
 
 % Compute means
 y = zeros(3,1);
-y(1) = prop_sigma_points(1,:)*wc;
-y(2) = atan2(sin(prop_sigma_points(2,:))*wc,cos(prop_sigma_points(2,:))*wc);
-y(3) = prop_sigma_points(3,:)*wc;
+y(1) = prop_sigma_points(1,:)*wm;
+y(2) = atan2(sin(prop_sigma_points(2,:))*wm,cos(prop_sigma_points(2,:))*wm);
+y(3) = prop_sigma_points(3,:)*wm;
 
 % Compute tilde
 y_tilde = zeros(3,2*n+1);

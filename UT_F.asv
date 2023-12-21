@@ -28,7 +28,7 @@ wc(1) = w0 + 1 - alpha^2 + beta;
 wc(2:2*n+1) = 1/(2*(n+lambda));
 
 wm = wc;
-wm(1) = w0;
+wm(1) 
 
 % Factorise covariance matrix whit SVD
 [U,S] = svd(sigma);
@@ -65,16 +65,16 @@ for i = 1:size(gamma,2)
         [dxc;...
         dtheta;...
         ( (V + U)*N*W - dxc*N*W^2 + cos(theta)*g*sin(theta)*Rm*P^2 + dtheta^2*sin(theta)*Rm*N*P)/(Rm*(N*M - cos(theta)^2*P^2));...
-        -P/Rm*(g*sin(theta)*Rm*M + cos(theta)*dtheta^2*sin(theta)*Rm*P + cos(theta)*(V + U)*M - cos(theta)*dxc*W^2)/(N*M - cos(theta)^2*P^2)];
+        -P/Rm*(g*sin(theta)*Rm*M + cos(theta)*dtheta^2*sin(theta)*Rm*P + cos(theta)*(V + U)*W - cos(theta)*dxc*W^2)/(N*M - cos(theta)^2*P^2)];
 end
 
 % Propagated mean
 p_mean = zeros(length(x_mean), 1);
-p_mean(1) = prop_sigma_points(1,:)*wm;
-p_mean(2) = prop_sigma_points(2,:)*wm;
+p_mean(1) = prop_sigma_points(1,:)*wc;
+p_mean(2) = prop_sigma_points(2,:)*wc;
 %p_mean(2) = atan2(sin(prop_sigma_points(2,:))*wc,cos(prop_sigma_points(2,:))*wc);  %Dovrebbe essere così ma non funziona
-p_mean(3) = prop_sigma_points(3,:)*wm;
-p_mean(4) = prop_sigma_points(4,:)*wm;
+p_mean(3) = prop_sigma_points(3,:)*wc;
+p_mean(4) = prop_sigma_points(4,:)*wc;
 
 % Compute tilde
 p_tilde = zeros(length(x_mean),2*n+1);
