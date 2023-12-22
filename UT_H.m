@@ -43,7 +43,7 @@ end
 
 % Propagated sigma points eval.
 prop_sigma_points = zeros(3,2*n+1);
-for i = 1:size(gamma,2)
+for i = 1:size(sigma_points,2)
 
     % Rename sigma points componets
     xc = sigma_points(1,i);

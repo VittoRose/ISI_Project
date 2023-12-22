@@ -8,7 +8,7 @@ GET_MATRIX = true;
 PLOT_FILTER = true;
 
 % Simulation time
-sim_time = 5;
+sim_time = 20;
 
 % UKF and EKF sample time
 dt_EKF = 0.001;
@@ -110,3 +110,6 @@ x_mean_0 = [xc_0_i; theta_0_i; dxc_0_i; dtheta_0_i];
 P_0 = [std_dev_xc^2 0 0 0; 0 std_dev_theta^2 0 0; 0 0 std_dev_dxc^2 0; 0 0 0 std_dev_dtheta^2];
 
 epsilon = 0.0001;
+
+
+

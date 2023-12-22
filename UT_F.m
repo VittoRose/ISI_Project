@@ -51,7 +51,7 @@ end
 
 % Propagated sigma points eval.
 prop_sigma_points = zeros(length(x_mean),2*n+1);
-for i = 1:size(gamma,2)
+for i = 1:size(sigma_points,2)
 
     % Rename sigma points componets
     % xc = sigma_points(1,i);
@@ -65,7 +65,7 @@ for i = 1:size(gamma,2)
         [dxc;...
         dtheta;...
         ( (V + U)*N*W - dxc*N*W^2 + cos(theta)*g*sin(theta)*Rm*P^2 + dtheta^2*sin(theta)*Rm*N*P)/(Rm*(N*M - cos(theta)^2*P^2));...
-        -P/Rm*(g*sin(theta)*Rm*M + cos(theta)*dtheta^2*sin(theta)*Rm*P + cos(theta)*(V + U)*M - cos(theta)*dxc*W^2)/(N*M - cos(theta)^2*P^2)];
+        -P/Rm*(g*sin(theta)*Rm*M + cos(theta)*dtheta^2*sin(theta)*Rm*P + cos(theta)*(V + U)*W - cos(theta)*dxc*W^2)/(N*M - cos(theta)^2*P^2)];
 end
 
 % Propagated mean
