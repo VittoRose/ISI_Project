@@ -3,7 +3,11 @@
 clear;
 clc
 
+% Simulation Flags
 GET_MATRIX = true;
+PLOT_FILTER = true;
+
+% Simulation time
 sim_time = 20;
 
 % UKF and EKF sample time

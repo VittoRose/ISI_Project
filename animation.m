@@ -50,6 +50,8 @@ for i = 1:1:length(xc_plot)
 % Draw UFK
     subplot(1,2,2)
     draw_sys(xc_plot(i), theta_plot(i), x_UKF_plot(i), theta_UKF_plot(i), dim, "UKF");
+    
+% MATLAB optimization    
     drawnow limitrate;
     pause(0.01);
 end

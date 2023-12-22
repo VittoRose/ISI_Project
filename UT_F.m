@@ -12,7 +12,7 @@ P = param.P;
 x = [x_mean; U_mean];
 
 % Define Covariance for UT
-sigma = [sigma_x, zeros(size(x_mean, 1), size(Q, 2)); zeros(size(Q, 1), size(sigma_x, 2)) Q];
+sigma = blkdiag(sigma_x,Q);
 
 % Define parameters
 alpha = 1;
