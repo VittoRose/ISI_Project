@@ -150,5 +150,8 @@ P_0 = [std_dev_xc^2 0 0 0; 0 std_dev_theta^2 0 0; 0 0 std_dev_dxc^2 0; 0 0 0 std
 
 epsilon = 0.0001;
 
+%% Mahalanobis treshold
+m_treshold = 5;
+
 
 
