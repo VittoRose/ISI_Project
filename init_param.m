@@ -40,7 +40,7 @@ std_dev_d = 0.01;
 % Mean input disturbe
 U_mean = 0;                 % [V]
 
-%% System dimension
+%% Ideal System dimension
 
 % Rail length
 dim.xmin = 0;               %[m]
@@ -55,7 +55,26 @@ dim.L1 = 3;                 %[m]
 dim.L2 = 3;                 %[m]
 dim.Lp = 3;                 %[m]
 
-%% System inertial param
+%% Standard deviation system dimension
+std_dev_dim = 0.01;         %[m]
+
+%% Real System dimension
+
+% Rail length
+dim_real.xmin = 0 + std_dev_dim*randn(1,1);               %[m]
+dim_real.xmax = 10 + std_dev_dim*randn(1,1);              %[m]
+
+% Kart dimension
+dim_real.h = 1 + std_dev_dim*randn(1,1);                  %[m]
+dim_real.b = 1.5 + std_dev_dim*randn(1,1);                %[m]
+
+% Pendulum length
+dim_real.L1 = 3 + std_dev_dim*randn(1,1);                 %[m]
+dim_real.L2 = 3 + std_dev_dim*randn(1,1);                 %[m]
+dim_real.Lp = 3 + std_dev_dim*randn(1,1);                 %[m]
+
+
+%% Ideal system inertial param
 
 % Masses
 Mp = 10;             %[kg]
@@ -63,18 +82,38 @@ Mc = 30;            %[kg]
 M1 = 10;             %[kg]
 M2 = 10;             %[kg]
 
-% Other param
+%% Standard deviation inertial param
+std_dev_m = 0.01;         %[kg]
+
+%% Real system inertial param
+
+% Masses
+Mp_real = 10 + std_dev_m*randn(1,1);         %[kg]
+Mc_real = 30 + std_dev_m*randn(1,1);         %[kg]
+M1_real = 10 + std_dev_m*randn(1,1);         %[kg]
+M2_real = 10 + std_dev_m*randn(1,1);         %[kg]
+
+%% Other param
 Kg = 4;         % [-] Planetary gearbox ratio
 Km = 2;         % [Nm/A] DC motor constant
 r = 0.1;        % [m] motor pinion radius   
 
-% Param for dynamic equations
+%% Ideal param for dynamic equations
 param.M = Mp + Mc + M1 + M2;   
 param.N = 4/3*(M2*dim.L2^2 + M1*dim.L1^2) + Mp*dim.Lp^2;
 param.P = M2*dim.L2 + Mp*dim.Lp - M1*dim.L1;
 param.W = Kg*Km/(2*r);
 param.Rm = 0.1;                                 % [ohm] armature resistence
 param.g = 9.81;                                 % [m/s^2]
+
+%% Real param for dynamic equations
+param_real.M = Mp_real + Mc_real + M1_real + M2_real;   
+param_real.N = 4/3*(M2_real*dim_real.L2^2 + M1_real*dim_real.L1^2) + Mp_real*dim_real.Lp^2;
+param_real.P = M2_real*dim_real.L2 + Mp_real*dim_real.Lp - M1_real*dim_real.L1;
+param_real.W = Kg*Km/(2*r);
+param_real.Rm = 0.1;                                 % [ohm] armature resistence
+param_real.g = 9.81;                                 % [m/s^2]
+
 
 %% Sensor's Params
 
