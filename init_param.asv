@@ -4,15 +4,15 @@ clear;
 clc
 
 % Simulation Flags
-GET_MATRIX = true;
+GET_MATRIX = false;
 PLOT_FILTER = true;
 
 % Simulation time
-sim_time = 000;
+sim_time = 20;          % [s]
 
 % UKF and EKF sample time
-dt_EKF = 0.001;
-dt_UKF = 0.001;
+dt_EKF = 0.001;         % [s]
+dt_UKF = 0.001;         % [s]
 
 %% Ideal Initial condition
 xc_0_i = 2;           % [m]
@@ -38,7 +38,7 @@ dtheta_0 = dtheta_0_i + std_dev_dtheta*randn(1,1);     % [rad/s]
 std_dev_d = 0.01;
 
 % Mean input disturbe
-U_mean = 0;
+U_mean = 0;                 
 
 %% System dimension
 
@@ -110,3 +110,6 @@ x_mean_0 = [xc_0_i; theta_0_i; dxc_0_i; dtheta_0_i];
 P_0 = [std_dev_xc^2 0 0 0; 0 std_dev_theta^2 0 0; 0 0 std_dev_dxc^2 0; 0 0 0 std_dev_dtheta^2];
 
 epsilon = 0.0001;
+
+
+

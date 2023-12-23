@@ -8,11 +8,11 @@ GET_MATRIX = false;
 PLOT_FILTER = true;
 
 % Simulation time
-sim_time = 20;
+sim_time = 20;          % [s]
 
 % UKF and EKF sample time
-dt_EKF = 0.001;
-dt_UKF = 0.001;
+dt_EKF = 0.001;         % [s]
+dt_UKF = 0.001;         % [s]
 
 %% Ideal Initial condition
 xc_0_i = 2;           % [m]
@@ -38,7 +38,7 @@ dtheta_0 = dtheta_0_i + std_dev_dtheta*randn(1,1);     % [rad/s]
 std_dev_d = 0.01;
 
 % Mean input disturbe
-U_mean = 0;
+U_mean = 0;                 % [V]
 
 %% System dimension
 
@@ -64,8 +64,8 @@ M1 = 10;             %[kg]
 M2 = 10;             %[kg]
 
 % Other param
-Kg = 4;         % Planetary gearbox ratio
-Km = 2;         % DC motor constant
+Kg = 4;         % [-] Planetary gearbox ratio
+Km = 2;         % [Nm/A] DC motor constant
 r = 0.1;        % [m] motor pinion radius   
 
 % Param for dynamic equations
@@ -97,7 +97,7 @@ if GET_MATRIX
     Get_D_matrix
 end
 
-%% Parameters for EKF
+%% Parameters for Filtering
 
 % Sensor Covariance
 R =[std_dev.distance_sensor^2 0 0; 0 std_dev.a1_sensor^2 0; 0 0 std_dev.angularspeed_sensor^2];
