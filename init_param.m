@@ -4,7 +4,7 @@ clear;
 clc
 
 % Simulation Flags
-GET_MATRIX = false;
+GET_MATRIX = true;
 PLOT_FILTER = true;
 
 % Simulation time
