@@ -34,7 +34,7 @@ theta_UKF = reshape(theta_UKF,1,size(theta_UKF,3));
 dx_UKF = reshape(dx_UKF,1,size(dx_UKF,3));
 dtheta_UKF = reshape(dtheta_UKF,1,size(dtheta_UKF,3));
 
-%% Real vs EKF
+%% Real vs EKF vs RTS
 figure
 title("EKF");
 % xc plot
@@ -42,9 +42,13 @@ subplot(2,2,1)
 plot(t,xc,'k','LineWidth',2)
 hold on
 plot(t,x_EKF,'r','LineWidth',2)
-title("X_c real vs X_c EKF")
+hold on
+% draw RTS
+plot(t,xs(1,:),'b','LineWidth',1)
+title("X_c real vs X_c EKF vs X_c RTS")
+%
 grid on
-legend("Real","EKF");
+legend("Real","EKF","RTS");
 hold off
 
 % theta plot
@@ -52,9 +56,12 @@ subplot(2,2,2)
 plot(t,theta,'k','LineWidth',2)
 hold on
 plot(t,theta_EKF,'r','LineWidth',2)
-title("\theta real vs \theta EKF")
+% draw RTS
+plot(t,xs(2,:),'b','LineWidth',1)
+title("\theta real vs \theta EKF vs \theta RTS")
+%
 grid on
-legend("Real","EKF");
+legend("Real","EKF", "RTS");
 hold off
 
 % dxc plot
@@ -62,9 +69,12 @@ subplot(2,2,3)
 plot(t,dxc,'k','LineWidth',2)
 hold on
 plot(t,dx_EKF,'r','LineWidth',2)
-title("dX_c real vs dX_c EKF")
+% draw RTS
+plot(t,xs(3,:),'b','LineWidth',1)
+title("dX_c real vs dX_c EKF vs dX_c RTS")
+%
 grid on
-legend("Real","EKF");
+legend("Real","EKF", "RTS");
 hold off
 
 % dtheta plot
@@ -72,9 +82,12 @@ subplot(2,2,4)
 plot(t,dtheta,'k','LineWidth',2)
 hold on
 plot(t,dtheta_EKF,'r','LineWidth',2)
-title("d\theta real vs d\theta EKF")
+% draw RTS
+plot(t,xs(4,:),'b','LineWidth',1)
+title("d\theta real vs d\theta EKF vs d\theta RTS")
+%
 grid on
-legend("Real","EKF");
+legend("Real","EKF", "RTS");
 hold off
 
 
