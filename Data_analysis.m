@@ -5,10 +5,10 @@ close all;
 t = out.tout;
 
 % Real state
-theta = out.theta.Data; 
-xc = out.xc.Data;
-dtheta = out.dtheta.Data;
-dxc = out.dxc.Data;
+theta = out.theta.Data'; 
+xc = out.xc.Data';
+dtheta = out.dtheta.Data';
+dxc = out.dxc.Data';
 
 % EKF state
 x_EKF = out.x_EKF.Data;

@@ -14,6 +14,9 @@ sim_time = 20;          % [s]
 dt_EKF = 0.001;         % [s]
 dt_UKF = 0.001;         % [s]
 
+% Sample time for simulink signals
+out_rate = 0.001;       % [s]
+
 %% Ideal Initial condition
 xc_0_i = 2;           % [m]
 dxc_0_i = 0;          % [m/s]
@@ -118,15 +121,15 @@ param_real.g = 9.81;                                 % [m/s^2]
 %% Sensor's Params
 
 % Sensors's standard deviations
-std_dev.distance_sensor = 0.05;     % [m] Deviazione standard sensore per misurazione distanza D (sensore laser)
-std_dev.a1_sensor = 0.09;           % [rad] Deviazione standard sensore per misurazione angolo a1 (telecamera)
-std_dev.angularspeed_sensor = 0.1;  % [rad/s] Deviazione standard sensore per misurazione velocità angolare pignone (sensore a effetto hall)
+std_dev.distance_sensor = 0.07;             % [m] Laser sensor
+std_dev.a1_sensor = 0.09;                   % [rad] Deviazione standard sensore per misurazione angolo a1 (telecamera)
+std_dev.angularspeed_sensor = 0.05*12.5;    % [rad/s] Hall effect sensor (max error * max speed)
 
 % Sensor sampling times
 
-Ts.distance_sensor = 1e-2;          % [s]
-Ts.a1_sensor = 5e-2;                % [s]
-Ts.angularspeed_sensor = 1e-3;      % [s]
+Ts.distance_sensor = 0.03;          % [s]       33 Hz
+Ts.a1_sensor = 5e-2;                % [s]       
+Ts.angularspeed_sensor = 1/100;     % [s]       Analog signal, max freq DAC Arduino 1.74 MHz
 
 %% Evaluate matrix for EKF
 
