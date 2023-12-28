@@ -1,4 +1,4 @@
-% Rauch Tung Striebel regolarization
+% Rauch Tung Striebel regolarization for EKF
 
 % x format homogenization
 x_new = transpose(out.x_new_EKF.data);
@@ -6,12 +6,12 @@ x_now = [out.x_EKF.data; out.theta_EKF.data; out.dx_EKF.data; out.dtheta_EKF.dat
 
 % Initialization
 C = zeros(4, 4);
-xs = zeros(4, length(out.tout));
+xs_EKF = zeros(4, length(out.tout));
 Ps = zeros(4, 4, length(out.tout));
 
 % For cicle initialization
 x = x_now(:, length(out.tout));
-xs(:, length(out.tout)) = x;
+xs_EKF(:, length(out.tout)) = x;
 
 for i = (length(out.tout) - 1):-1:1
     P = out.P_EKF.data(:,:,i);%
@@ -22,5 +22,5 @@ for i = (length(out.tout) - 1):-1:1
     
     C = P*transpose(F)*pinv(P_new);
     x = x_now1 + C*( x - x_new1 );
-    xs(:,i) = x;
+    xs_EKF(:,i) = x;
 end
