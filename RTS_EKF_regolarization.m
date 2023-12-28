@@ -1,7 +1,7 @@
 % Rauch Tung Striebel regolarization
 
 % x format homogenization
-x_new = transpose(out.x_new.data);
+x_new = transpose(out.x_new_EKF.data);
 x_now = [out.x_EKF.data; out.theta_EKF.data; out.dx_EKF.data; out.dtheta_EKF.data];
 
 % Initialization
@@ -14,9 +14,9 @@ x = x_now(:, length(out.tout));
 xs(:, length(out.tout)) = x;
 
 for i = (length(out.tout) - 1):-1:1
-    P = out.P.data(:,:,i);
-    P_new = out.P_new.data(:,:,i);
-    F = out.F.data(:,:,i);
+    P = out.P_EKF.data(:,:,i);%
+    P_new = out.P_new_EKF.data(:,:,i);%
+    F = out.F_EKF.data(:,:,i);%
     x_now1 = x_now(:,i);
     x_new1 = x_new(:,i);
     
