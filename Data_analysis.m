@@ -99,7 +99,7 @@ plot(t,xc,'k','LineWidth',2)
 hold on
 plot(t,x_UKF,'r','LineWidth',2)
 % draw RTS
-plot(t,xs_UKF(1,:),'b','LineWidth',1)
+% plot(t,xs_UKF(1,:),'b','LineWidth',1)
 title("X_c real vs X_c UKF vs X_c RTS")
 grid on
 legend("Real","UKF", "RTS");
@@ -111,7 +111,7 @@ plot(t,theta,'k','LineWidth',2)
 hold on
 plot(t,theta_UKF,'r','LineWidth',2)
 % draw RTS
-plot(t,xs_UKF(2,:),'b','LineWidth',1)
+% plot(t,xs_UKF(2,:),'b','LineWidth',1)
 title("X_c real vs X_c UKF vs X_c RTS")
 grid on
 legend("Real","UKF", "RTS");
@@ -123,7 +123,7 @@ plot(t,dxc,'k','LineWidth',2)
 hold on
 plot(t,dx_UKF,'r','LineWidth',2)
 % draw RTS
-plot(t,xs_UKF(3,:),'b','LineWidth',1)
+% plot(t,xs_UKF(3,:),'b','LineWidth',1)
 title("X_c real vs X_c UKF vs X_c RTS")
 grid on
 legend("Real","UKF", "RTS");
@@ -135,7 +135,7 @@ plot(t,dtheta,'k','LineWidth',2)
 hold on
 plot(t,dtheta_UKF,'r','LineWidth',2)
 % draw RTS
-plot(t,xs_UKF(4,:),'b','LineWidth',1)
+% plot(t,xs_UKF(4,:),'b','LineWidth',1)
 title("X_c real vs X_c UKF vs X_c RTS")
 grid on
 legend("Real","UKF", "RTS");
