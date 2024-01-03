@@ -8,7 +8,7 @@ GET_MATRIX = true;
 PLOT_FILTER = true;
 
 % Simulation time
-sim_time = 20;          % [s]
+sim_time = 5;          % [s]
 
 % UKF and EKF sample time
 dt_EKF = 0.001;         % [s]
@@ -87,7 +87,7 @@ M2_real = M2 + std_dev_m*randn(1,1);         %[kg]
 
 %% Other param
 Kg = 4;         % [-] Planetary gearbox ratio
-Km = 2;      % [Nm/A] DC motor constant
+Km = 0.23;      % [Nm/A] DC motor constant
 r = 0.1;        % [m] motor pinion radius   
 
 % Ideal param for dynamic equations
