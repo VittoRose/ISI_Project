@@ -128,7 +128,7 @@ std_dev.angularspeed_sensor = 0.05*12.5;    % [rad/s] Hall effect sensor (max er
 % Sensor sampling times
 
 Ts.distance_sensor = 0.03;          % [s]       33 Hz
-Ts.a1_sensor = 5e-2;                % [s]       
+Ts.a1_sensor = 0.04;                % [s]       
 Ts.angularspeed_sensor = 1/100;     % [s]       Analog signal, max freq DAC Arduino 1.74 MHz
 
 %% Evaluate matrix for EKF

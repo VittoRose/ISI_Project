@@ -71,8 +71,8 @@ end
 % Propagated mean
 p_mean = zeros(length(x_mean), 1);
 p_mean(1) = prop_sigma_points(1,:)*wm;
-p_mean(2) = prop_sigma_points(2,:)*wm;
-%p_mean(2) = atan2(sin(prop_sigma_points(2,:))*wc,cos(prop_sigma_points(2,:))*wc);  %Dovrebbe essere così ma non funziona
+%p_mean(2) = prop_sigma_points(2,:)*wm;
+p_mean(2) = atan2(sin(prop_sigma_points(2,:))*wc,cos(prop_sigma_points(2,:))*wc);  %Dovrebbe essere così ma non funziona
 p_mean(3) = prop_sigma_points(3,:)*wm;
 p_mean(4) = prop_sigma_points(4,:)*wm;
 
