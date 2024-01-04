@@ -8,7 +8,7 @@ GET_MATRIX = true;
 PLOT_FILTER = true;
 
 % Simulation time
-sim_time = 20;          % [s]
+sim_time = 10;          % [s]
 
 % UKF and EKF sample time
 dt_EKF = 0.001;         % [s]
