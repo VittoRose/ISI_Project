@@ -8,7 +8,7 @@ GET_MATRIX = true;
 PLOT_FILTER = false;
 
 % Simulation time
-sim_time = 10;          % [s]
+sim_time = 20;          % [s]
 
 % UKF and EKF sample time
 dt_EKF = 0.001;         % [s]
@@ -23,7 +23,7 @@ out_rate = 0.001;       % [s]
 xc_0_i = 2;           % [m]
 dxc_0_i = 0;          % [m/s]
 theta_0_i = pi/6;     % [rad]
-dtheta_0_i = 0.1;       % [rad/s]
+dtheta_0_i = 0;       % [rad/s]
 
 % Std deviation initial conditions
 std_dev_xc = 0.1;               % [m]
@@ -37,6 +37,9 @@ dxc_0 = dxc_0_i + std_dev_theta*randn(1,1);            % [m/s]
 theta_0 = theta_0_i + std_dev_dxc*randn(1,1);          % [rad]
 dtheta_0 = dtheta_0_i + std_dev_dtheta*randn(1,1);     % [rad/s]
 
+%% Input parameters
+input_amplitude = 5;    % [V]
+input_frequency = 1;    % [Hz]
 %% Input disturbe parameter
 
 % Std deviation input disturbe
@@ -46,7 +49,7 @@ std_dev_d = 0.01;           % [V]
 U_mean = 0;                 % [V]
 
 % Sampling time for noise
-Ts.v_noise = 0.01;
+Ts.u_noise = 0.01;
 
 %% System dimension
 
@@ -76,7 +79,7 @@ dim_real.Lp = dim.Lp + std_dev_dim*randn(1,1);                 %[m]
 % Masses
 Mp = 10;                %[kg]
 Mc = 30;                %[kg]
-M1 = 5;                 %[kg]
+M1 = 10;                 %[kg]
 M2 = 10;                %[kg]
 
 % Standard deviation inertial param
