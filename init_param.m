@@ -5,7 +5,7 @@ clc
 
 % Simulation Flags
 GET_MATRIX = true;
-PLOT_FILTER = false;
+PLOT_FILTER = true;
 
 % Simulation time
 sim_time = 20;          % [s]
@@ -38,8 +38,10 @@ theta_0 = theta_0_i + std_dev_dxc*randn(1,1);          % [rad]
 dtheta_0 = dtheta_0_i + std_dev_dtheta*randn(1,1);     % [rad/s]
 
 %% Input parameters
+
 input_amplitude = 5;    % [V]
 input_frequency = 1;    % [Hz]
+
 %% Input disturbe parameter
 
 % Std deviation input disturbe

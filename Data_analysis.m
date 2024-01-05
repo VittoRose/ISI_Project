@@ -45,7 +45,8 @@ plot(t,x_EKF,'r','LineWidth',2)
 % draw RTS
 plot(t,xs_EKF(1,:),'b','LineWidth',1)
 title("X_c real vs X_c EKF vs X_c RTS")
-%
+xlabel("[s]")
+ylabel("[m]")
 grid on
 legend("Real","EKF","RTS");
 hold off
@@ -58,7 +59,8 @@ plot(t,theta_EKF,'r','LineWidth',2)
 % draw RTS
 plot(t,xs_EKF(2,:),'b','LineWidth',1)
 title("\theta real vs \theta EKF vs \theta RTS")
-
+xlabel("[s]")
+ylabel("[rad]")
 grid on
 legend("Real","EKF", "RTS");
 hold off
@@ -71,7 +73,8 @@ plot(t,dx_EKF,'r','LineWidth',2)
 % draw RTS
 plot(t,xs_EKF(3,:),'b','LineWidth',1)
 title("dX_c real vs dX_c EKF vs dX_c RTS")
-
+xlabel("[s]")
+ylabel("[m/s]")
 grid on
 legend("Real","EKF", "RTS");
 hold off
@@ -84,7 +87,8 @@ plot(t,dtheta_EKF,'r','LineWidth',2)
 % draw RTS
 plot(t,xs_EKF(4,:),'b','LineWidth',1)
 title("d\theta real vs d\theta EKF vs d\theta RTS")
-
+xlabel("[s]")
+ylabel("[rad/s]")
 grid on
 legend("Real","EKF", "RTS");
 hold off
@@ -98,8 +102,8 @@ subplot(2,2,1)
 plot(t,xc,'k','LineWidth',2)
 hold on
 plot(t,x_UKF,'r','LineWidth',2)
-% draw RTS
-% plot(t,xs_UKF(1,:),'b','LineWidth',1)
+xlabel("[s]")
+ylabel("[m]")
 title("X_c real vs X_c UKF")
 grid on
 legend("Real","UKF");
@@ -110,9 +114,9 @@ subplot(2,2,2)
 plot(t,theta,'k','LineWidth',2)
 hold on
 plot(t,theta_UKF,'r','LineWidth',2)
-% draw RTS
-% plot(t,xs_UKF(2,:),'b','LineWidth',1)
-title("X_c real vs X_c UKF")
+xlabel("[s]")
+ylabel("[rad]")
+title("\theta real vs \theta UKF")
 grid on
 legend("Real","UKF");
 hold off
@@ -122,9 +126,9 @@ subplot(2,2,3)
 plot(t,dxc,'k','LineWidth',2)
 hold on
 plot(t,dx_UKF,'r','LineWidth',2)
-% draw RTS
-% plot(t,xs_UKF(3,:),'b','LineWidth',1)
-title("X_c real vs X_c UKF")
+xlabel("[s]")
+ylabel("[m/s]")
+title("dX_c real vs dX_c UKF")
 grid on
 legend("Real","UKF");
 hold off
@@ -134,9 +138,9 @@ subplot(2,2,4)
 plot(t,dtheta,'k','LineWidth',2)
 hold on
 plot(t,dtheta_UKF,'r','LineWidth',2)
-% draw RTS
-% plot(t,xs_UKF(4,:),'b','LineWidth',1)
-title("X_c real vs X_c UKF")
+xlabel("[s]")
+ylabel("[rad/s]")
+title("d\theta real vs d\theta UKF")
 grid on
 legend("Real","UKF");
 hold off
