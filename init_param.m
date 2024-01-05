@@ -5,7 +5,7 @@ clc
 
 % Simulation Flags
 GET_MATRIX = true;
-PLOT_FILTER = true;
+PLOT_FILTER = false;
 
 % Simulation time
 sim_time = 10;          % [s]
@@ -22,8 +22,8 @@ out_rate = 0.001;       % [s]
 % Ideal Initial condition
 xc_0_i = 2;           % [m]
 dxc_0_i = 0;          % [m/s]
-theta_0_i = pi/4;     % [rad]
-dtheta_0_i = 0;       % [rad/s]
+theta_0_i = pi/6;     % [rad]
+dtheta_0_i = 0.1;       % [rad/s]
 
 % Std deviation initial conditions
 std_dev_xc = 0.1;               % [m]
@@ -40,10 +40,13 @@ dtheta_0 = dtheta_0_i + std_dev_dtheta*randn(1,1);     % [rad/s]
 %% Input disturbe parameter
 
 % Std deviation input disturbe
-std_dev_d = 0.01;
+std_dev_d = 0.01;           % [V]
 
 % Mean input disturbe
 U_mean = 0;                 % [V]
+
+% Sampling time for noise
+Ts.v_noise = 0.01;
 
 %% System dimension
 
@@ -74,10 +77,10 @@ dim_real.Lp = dim.Lp + std_dev_dim*randn(1,1);                 %[m]
 Mp = 10;                %[kg]
 Mc = 30;                %[kg]
 M1 = 5;                 %[kg]
-M2 = 10;                 %[kg]
+M2 = 10;                %[kg]
 
 % Standard deviation inertial param
-std_dev_m = 0.01;         %[kg]
+std_dev_m = 0.1;         %[kg]
 
 % Real system inertial param
 Mp_real = Mp + std_dev_m*randn(1,1);         %[kg]
@@ -87,7 +90,7 @@ M2_real = M2 + std_dev_m*randn(1,1);         %[kg]
 
 %% Other param
 Kg = 4;         % [-] Planetary gearbox ratio
-Km = 2;      % [Nm/A] DC motor constant
+Km = 0.23;      % [Nm/A] DC motor constant
 r = 0.1;        % [m] motor pinion radius   
 
 % Ideal param for dynamic equations
